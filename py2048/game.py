@@ -42,7 +42,7 @@ class Game2048:
         return [0 for _i in range(4 - len(non_zeros))] + non_zeros
 
 
-    def swipe_right(self):
+    def right(self):
         self.game_board[0:4] = self.squash_four(self.game_board[0:4])
         self.game_board[4:8] = self.squash_four(self.game_board[4:8])
         self.game_board[8:12] = self.squash_four(self.game_board[8:12])
@@ -68,3 +68,27 @@ class Game2048:
         new_board[8] = self.game_board[14]
         new_board[12] = self.game_board[15]
         self.game_board = new_board
+
+
+    def up(self):
+        self.rotation_90_right()
+        self.right()
+        self.rotation_90_right()
+        self.rotation_90_right()
+        self.rotation_90_right()
+
+
+    def down(self):
+        self.rotation_90_right()
+        self.rotation_90_right()
+        self.rotation_90_right()
+        self.right()
+        self.rotation_90_right()
+
+
+    def left(self):
+        self.rotation_90_right()
+        self.rotation_90_right()
+        self.right()
+        self.rotation_90_right()
+        self.rotation_90_right()
